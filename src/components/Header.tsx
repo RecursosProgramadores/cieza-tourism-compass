@@ -15,7 +15,7 @@ const services = [
 ];
 
 const navLinks = [
-  { name: "Sobre Mi", href: "#sobre-mi" },
+  { name: "Sobre Mí", href: "#sobre-mi" },
   { name: "Educación", href: "#educacion" },
   { name: "Servicios", href: "#servicios", hasDropdown: true },
   { name: "Proyectos", href: "#proyectos" },
@@ -27,12 +27,27 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 50);
+      
+      // Detect active section
+      const sections = navLinks.map(link => link.href.replace("#", ""));
+      for (const section of sections.reverse()) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -41,56 +56,63 @@ export default function Header() {
     setIsServicesOpen(false);
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: elementPosition - offset, behavior: "smooth" });
     }
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-primary/95 backdrop-blur-md shadow-elevated py-2"
-          : "bg-transparent py-4"
+          ? "glass-dark py-3 shadow-elevated"
+          : "bg-transparent py-5"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.a
             href="#"
-            className="flex flex-col"
+            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            className="flex flex-col group cursor-pointer"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
           >
-            <span className="text-primary-foreground font-bold text-lg md:text-xl tracking-tight">
+            <span className="text-primary-foreground font-bold text-xl md:text-2xl tracking-tight font-display group-hover:text-secondary transition-colors duration-300">
               Yesenia Cieza
             </span>
-            <span className="text-secondary text-xs md:text-sm font-medium">
+            <span className="text-secondary/90 text-xs md:text-sm font-medium tracking-widest uppercase">
               Consultores
             </span>
           </motion.a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.name}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
                 className="relative"
                 onMouseEnter={() => link.hasDropdown && setIsServicesOpen(true)}
                 onMouseLeave={() => link.hasDropdown && setIsServicesOpen(false)}
               >
                 <button
                   onClick={() => handleNavClick(link.href)}
-                  className="px-4 py-2 text-primary-foreground/90 hover:text-secondary transition-colors font-medium text-sm flex items-center gap-1"
+                  className={`px-4 py-2.5 font-medium text-sm flex items-center gap-1.5 rounded-lg transition-all duration-300 ${
+                    activeSection === link.href.replace("#", "")
+                      ? "text-secondary bg-secondary/10"
+                      : "text-primary-foreground/85 hover:text-secondary hover:bg-primary-foreground/5"
+                  }`}
                 >
                   {link.name}
                   {link.hasDropdown && (
                     <ChevronDown
-                      className={`w-4 h-4 transition-transform ${
+                      className={`w-4 h-4 transition-transform duration-300 ${
                         isServicesOpen ? "rotate-180" : ""
                       }`}
                     />
@@ -102,24 +124,27 @@ export default function Header() {
                   <AnimatePresence>
                     {isServicesOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 w-80 bg-card shadow-elevated rounded-lg overflow-hidden mt-1 border border-border"
+                        className="absolute top-full left-0 w-80 bg-card/98 backdrop-blur-xl shadow-elevated rounded-xl overflow-hidden mt-2 border border-border"
                       >
-                        <div className="py-2">
-                          {services.map((service) => (
-                            <button
+                        <div className="p-2">
+                          {services.map((service, idx) => (
+                            <motion.button
                               key={service.id}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: idx * 0.03 }}
                               onClick={() => handleNavClick(service.href)}
-                              className="w-full px-4 py-3 text-left text-foreground/80 hover:bg-secondary/10 hover:text-secondary transition-colors text-sm"
+                              className="w-full px-4 py-3 text-left text-foreground/80 hover:bg-secondary/10 hover:text-secondary rounded-lg transition-all duration-200 text-sm flex items-center gap-3 group"
                             >
-                              <span className="text-secondary font-semibold mr-2">
+                              <span className="text-secondary font-bold text-xs bg-secondary/10 px-2 py-1 rounded group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
                                 {service.id}
                               </span>
-                              {service.name}
-                            </button>
+                              <span className="font-medium">{service.name}</span>
+                            </motion.button>
                           ))}
                         </div>
                       </motion.div>
@@ -131,11 +156,12 @@ export default function Header() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="ml-4"
             >
               <Button
                 onClick={() => handleNavClick("#contacto")}
-                className="ml-4 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 shadow-soft hover:shadow-glow transition-all duration-300 btn-shine"
               >
                 Contáctanos
               </Button>
@@ -143,12 +169,36 @@ export default function Header() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden text-primary-foreground p-2"
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="lg:hidden text-primary-foreground p-2 hover:bg-primary-foreground/10 rounded-lg transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            <AnimatePresence mode="wait">
+              {isMobileMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X size={26} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu size={26} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
         </div>
 
         {/* Mobile Menu */}
@@ -158,11 +208,22 @@ export default function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden mt-4 pb-4 border-t border-primary-foreground/20"
+              transition={{ duration: 0.3 }}
+              className="lg:hidden mt-4 pb-4 overflow-hidden"
             >
-              <div className="pt-4 space-y-2">
-                {navLinks.map((link) => (
-                  <div key={link.name}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                className="pt-4 space-y-1 border-t border-primary-foreground/10"
+              >
+                {navLinks.map((link, index) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
                     <button
                       onClick={() => {
                         if (link.hasDropdown) {
@@ -171,44 +232,54 @@ export default function Header() {
                           handleNavClick(link.href);
                         }
                       }}
-                      className="w-full text-left px-4 py-3 text-primary-foreground hover:text-secondary transition-colors font-medium flex items-center justify-between"
+                      className="w-full text-left px-4 py-3 text-primary-foreground hover:text-secondary hover:bg-primary-foreground/5 rounded-lg transition-all font-medium flex items-center justify-between"
                     >
                       {link.name}
                       {link.hasDropdown && (
                         <ChevronDown
-                          className={`w-4 h-4 transition-transform ${
+                          className={`w-5 h-5 transition-transform duration-300 ${
                             isServicesOpen ? "rotate-180" : ""
                           }`}
                         />
                       )}
                     </button>
                     {link.hasDropdown && isServicesOpen && (
-                      <div className="bg-primary-foreground/5 rounded-lg mx-2 mb-2">
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        className="bg-primary-foreground/5 rounded-lg mx-2 my-1 overflow-hidden"
+                      >
                         {services.map((service) => (
                           <button
                             key={service.id}
                             onClick={() => handleNavClick(service.href)}
-                            className="w-full px-6 py-2 text-left text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
+                            className="w-full px-5 py-2.5 text-left text-primary-foreground/80 hover:text-secondary transition-colors text-sm flex items-center gap-2"
                           >
-                            <span className="text-secondary font-semibold mr-2">
+                            <span className="text-secondary font-bold text-xs">
                               {service.id}
                             </span>
                             {service.name}
                           </button>
                         ))}
-                      </div>
+                      </motion.div>
                     )}
-                  </div>
+                  </motion.div>
                 ))}
-                <div className="px-4 pt-2">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="px-4 pt-4"
+                >
                   <Button
                     onClick={() => handleNavClick("#contacto")}
-                    className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+                    className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-soft"
+                    size="lg"
                   >
                     Contáctanos
                   </Button>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </motion.nav>
           )}
         </AnimatePresence>
