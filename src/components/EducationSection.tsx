@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Award, FileCheck, BookOpen, Calendar } from "lucide-react";
+import { GraduationCap, Award, FileCheck, BookOpen, Calendar, Mic2, Users } from "lucide-react";
 
 const education = [
   {
@@ -57,9 +57,11 @@ export default function EducationSection() {
 
   return (
     <section id="educacion" className="py-24 md:py-32 bg-background relative overflow-hidden" ref={ref}>
-      {/* Background decoration */}
-      <div className="absolute top-1/2 left-0 w-72 h-72 bg-secondary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      
+      {/* Background decoration - More LIFE and COLOR */}
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-secondary/15 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 animate-pulse-soft" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] translate-y-1/2" />
+
       <div className="container mx-auto px-4 lg:px-8 relative">
         {/* Section Header */}
         <motion.div
@@ -82,26 +84,26 @@ export default function EducationSection() {
           {education.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card-premium p-8 text-center group"
+              className="card-premium p-10 text-center group border border-white/50 bg-card shadow-sm hover:shadow-plomo transition-all duration-300"
             >
-              <div className="inline-flex items-center justify-center p-4 bg-primary rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="inline-flex items-center justify-center p-5 bg-[#176ddd]/10 rounded-[2rem] mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-sm border border-[#176ddd]/20">
                 {item.type === "degree" ? (
-                  <GraduationCap className="w-8 h-8 text-primary-foreground" />
+                  <GraduationCap className="w-10 h-10 text-[#176ddd]" />
                 ) : (
-                  <Award className="w-8 h-8 text-primary-foreground" />
+                  <Award className="w-10 h-10 text-[#176ddd]" />
                 )}
               </div>
               {item.year && (
-                <span className="inline-block text-secondary font-bold text-sm bg-secondary/10 px-3 py-1 rounded-full mb-4">
+                <span className="inline-block text-secondary font-black text-xs bg-secondary/10 px-4 py-1.5 rounded-full mb-6 tracking-widest uppercase">
                   {item.year}
                 </span>
               )}
-              <h3 className="font-bold text-primary text-xl mb-3 font-display">{item.title}</h3>
-              <p className="text-muted-foreground text-sm mb-1">{item.institution}</p>
-              <p className="text-muted-foreground text-xs">{item.location}</p>
+              <h3 className="font-black text-primary text-2xl mb-4 font-display leading-tight">{item.title}</h3>
+              <p className="text-secondary font-bold text-sm mb-2">{item.institution}</p>
+              <p className="text-primary/50 text-xs uppercase tracking-tighter">{item.location}</p>
             </motion.div>
           ))}
         </div>
@@ -126,93 +128,116 @@ export default function EducationSection() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.4 + index * 0.06 }}
-                className="bg-muted/50 p-5 rounded-xl hover:bg-secondary/5 hover:shadow-soft transition-all duration-300 border border-transparent hover:border-secondary/20"
+                className="bg-card p-5 rounded-xl hover:bg-card/80 hover:shadow-sm transition-all duration-300 border border-white/50 hover:border-secondary/20"
               >
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-bold text-secondary bg-secondary/10 px-3 py-1.5 rounded-full flex items-center gap-1.5">
                     <Calendar className="w-3 h-3" />
                     {diploma.year}
                   </span>
-                  <span className="text-xs text-muted-foreground">{diploma.location}</span>
+                  <span className="text-xs text-primary/50">{diploma.location}</span>
                 </div>
-                <h4 className="font-semibold text-foreground text-sm mb-2 leading-tight">{diploma.title}</h4>
-                <p className="text-xs text-muted-foreground">{diploma.institution}</p>
+                <h4 className="font-semibold text-primary text-sm mb-2 leading-tight">{diploma.title}</h4>
+                <p className="text-xs text-primary/60">{diploma.institution}</p>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
         {/* Courses & Presentations */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Courses */}
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Courses & Certifications */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="card-premium p-8"
           >
             <div className="flex items-center gap-4 mb-8">
               <div className="p-3 bg-accent/10 rounded-xl">
                 <BookOpen className="w-6 h-6 text-accent" />
               </div>
-              <h3 className="text-xl font-bold text-primary font-display">Cursos y Certificaciones</h3>
+              <div>
+                <h3 className="text-2xl font-bold text-primary font-display">Cursos & Certificaciones</h3>
+                <p className="text-muted-foreground text-sm">Formación complementaria y técnica</p>
+              </div>
             </div>
-            <div className="space-y-3">
+
+            <div className="grid gap-4">
               {courses.map((course, index) => (
                 <motion.div
                   key={course.title}
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ delay: 0.6 + index * 0.05 }}
-                  className="flex items-start gap-4 p-4 bg-muted/30 rounded-xl hover:bg-accent/5 transition-colors"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.6 + index * 0.08 }}
+                  className="group relative p-5 rounded-2xl bg-card border border-border/50 hover:border-accent/40 hover:shadow-soft transition-all duration-300"
                 >
-                  <span className="text-xs font-bold text-accent bg-accent/10 px-2.5 py-1 rounded-full mt-0.5 flex-shrink-0">
-                    {course.year}
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground leading-tight">{course.title}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{course.institution}</p>
+                  <div className="flex justify-between items-start gap-4">
+                    <div className="flex-1">
+                      <h4 className="font-bold text-foreground text-base mb-1 group-hover:text-accent transition-colors leading-tight">
+                        {course.title}
+                      </h4>
+                      <p className="text-muted-foreground text-xs font-medium uppercase tracking-wider flex items-center gap-1.5">
+                        <Award className="w-3 h-3 text-accent/60" />
+                        {course.institution}
+                      </p>
+                    </div>
+                    <span className="text-[10px] font-black text-accent bg-accent/10 px-2 py-1 rounded-md shrink-0">
+                      {course.year}
+                    </span>
                   </div>
+                  {/* Subtle progress indicator or decorative dot */}
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-accent/20 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity" />
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Presentations */}
+          {/* Presentations & Seminars */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="card-premium p-8"
           >
             <div className="flex items-center gap-4 mb-8">
               <div className="p-3 bg-secondary/10 rounded-xl">
-                <Award className="w-6 h-6 text-secondary" />
+                <Mic2 className="w-6 h-6 text-secondary" />
               </div>
-              <h3 className="text-xl font-bold text-primary font-display">Ponencias y Seminarios</h3>
+              <div>
+                <h3 className="text-2xl font-bold text-primary font-display">Ponencias & Seminarios</h3>
+                <p className="text-muted-foreground text-sm">Transferencia de conocimiento</p>
+              </div>
             </div>
-            <div className="space-y-3">
+
+            <div className="grid gap-4">
               {presentations.map((presentation, index) => (
                 <motion.div
                   key={presentation.title}
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ delay: 0.7 + index * 0.05 }}
-                  className="flex items-start gap-4 p-4 bg-muted/30 rounded-xl hover:bg-secondary/5 transition-colors"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.7 + index * 0.08 }}
+                  className="group relative p-5 rounded-2xl bg-card border border-border/50 hover:border-secondary/40 hover:shadow-soft transition-all duration-300"
                 >
-                  <span className="text-xs font-bold text-secondary bg-secondary/10 px-2.5 py-1 rounded-full mt-0.5 flex-shrink-0">
-                    {presentation.year}
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground leading-tight">{presentation.title}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{presentation.institution}</p>
+                  <div className="flex justify-between items-start gap-4">
+                    <div className="flex-1">
+                      <h4 className="font-bold text-foreground text-base mb-1 group-hover:text-secondary transition-colors leading-tight">
+                        {presentation.title}
+                      </h4>
+                      <p className="text-muted-foreground text-xs font-medium uppercase tracking-wider flex items-center gap-1.5">
+                        <Users className="w-3 h-3 text-secondary/60" />
+                        {presentation.institution}
+                      </p>
+                    </div>
+                    <span className="text-[10px] font-black text-secondary bg-secondary/10 px-2 py-1 rounded-md shrink-0">
+                      {presentation.year}
+                    </span>
                   </div>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-secondary/20 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity" />
                 </motion.div>
               ))}
             </div>
           </motion.div>
         </div>
       </div>
-    </section>
+    </section >
   );
 }

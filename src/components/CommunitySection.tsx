@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users, Share2, Calendar, MessageCircle, ArrowRight } from "lucide-react";
+import { Users, Share2, Calendar, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import communityImage from "@/assets/community-tourism.jpg";
+import whatsappIcon from "@/assets/iconos/whatsapp.svg";
 
 const communityFeatures = [
   {
@@ -22,7 +23,7 @@ const communityFeatures = [
     description: "Capacitaciones y encuentros virtuales",
   },
   {
-    icon: MessageCircle,
+    icon: () => <img src={whatsappIcon} alt="" className="w-6 h-6" />,
     title: "Foro de Discusión",
     description: "Comparte y aprende con colegas",
   },
@@ -37,10 +38,12 @@ export default function CommunitySection() {
   };
 
   return (
-    <section id="comunidad" className="py-24 md:py-32 bg-muted/40 relative overflow-hidden" ref={ref}>
-      {/* Background decoration */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-      
+    <section id="comunidad" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden" ref={ref}>
+      {/* Background decoration - More LIFE and COLOR */}
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] animate-pulse-soft" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full dot-pattern opacity-30 pointer-events-none" />
+
       <div className="container mx-auto px-4 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
@@ -56,8 +59,8 @@ export default function CommunitySection() {
               Comunidad Turística
             </h2>
             <p className="text-foreground/80 text-lg leading-relaxed mb-10">
-              Espacio exclusivo para conectar con la comunidad turística en Perú. 
-              Comparte recursos, participa en eventos y colabora en proyectos de 
+              Espacio exclusivo para conectar con la comunidad turística en Perú.
+              Comparte recursos, participa en eventos y colabora en proyectos de
               turismo sostenible.
             </p>
 
@@ -68,34 +71,33 @@ export default function CommunitySection() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-secondary/30 hover:shadow-soft transition-all duration-300"
+                  className="flex items-start gap-5 p-5 rounded-2xl bg-card border border-white/50 hover:border-secondary/30 hover:shadow-plomo transition-all duration-300 group"
                 >
-                  <div className="p-3 bg-secondary/10 rounded-xl flex-shrink-0">
-                    <feature.icon className="w-5 h-5 text-secondary" />
+                  <div className="p-4 bg-secondary/10 rounded-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <feature.icon className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-primary text-sm mb-1">{feature.title}</h3>
-                    <p className="text-muted-foreground text-xs leading-relaxed">{feature.description}</p>
+                    <h3 className="font-black text-primary text-base mb-1">{feature.title}</h3>
+                    <p className="text-primary/60 text-[13px] leading-relaxed">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-5 items-center justify-center lg:justify-start">
               <Button
                 onClick={handleWhatsAppClick}
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold shadow-soft hover:shadow-glow transition-all duration-300 btn-shine group"
+                className="w-full sm:w-auto bg-[#22c55e] hover:bg-[#22c55e]/90 text-white px-10 py-7 text-lg shadow-glow-accent rounded-2xl group border-none"
               >
-                <MessageCircle className="w-5 h-5 mr-2" />
+                <img src={whatsappIcon} alt="" className="w-6 h-6 mr-3 brightness-0 invert" />
                 Únete por WhatsApp
-                <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-5 h-5 ml-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all" />
               </Button>
               <Button
-                variant="outline"
                 size="lg"
-                className="border-2 border-secondary/30 text-secondary hover:bg-secondary/10 hover:border-secondary font-semibold transition-all duration-300"
-                onClick={() => window.open("https://www.facebook.com", "_blank")}
+                className="w-full sm:w-auto bg-[#176ddd] hover:bg-[#176ddd]/90 text-white font-black px-10 py-7 text-lg rounded-2xl transition-all duration-300 shadow-glow-secondary border-none"
+                onClick={() => window.open("https://www.facebook.com/YeseniaCiezaConsultora", "_blank")}
               >
                 Síguenos en Facebook
               </Button>
@@ -117,7 +119,7 @@ export default function CommunitySection() {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
-              
+
               {/* Quote overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <motion.div
@@ -141,10 +143,10 @@ export default function CommunitySection() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute -top-6 -right-6 bg-secondary text-secondary-foreground p-6 rounded-2xl shadow-elevated"
+              className="absolute -top-10 -right-10 bg-secondary text-secondary-foreground p-8 rounded-[3rem] shadow-glow-secondary border-4 border-white group-hover:scale-110 transition-transform duration-500"
             >
-              <p className="text-4xl font-bold font-display">500+</p>
-              <p className="text-sm opacity-90">Profesionales</p>
+              <p className="text-5xl font-black font-display tracking-tighter">500+</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-90 mt-1">Profesionales</p>
             </motion.div>
 
             {/* Decorative element */}

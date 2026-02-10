@@ -5,7 +5,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  MessageCircle,
   Facebook,
   Send,
   CheckCircle,
@@ -15,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
+import whatsappIcon from "@/assets/iconos/whatsapp.svg";
 
 const contactInfo = [
   {
@@ -70,12 +70,13 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contacto" className="py-24 md:py-32 bg-primary relative overflow-hidden" ref={ref}>
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full dot-pattern opacity-10" />
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
-      
+    <section id="contacto" className="py-24 md:py-32 bg-background relative overflow-hidden" ref={ref}>
+      {/* Background decoration - Subtle and Professional */}
+      <div className="absolute top-0 left-0 w-full h-full dot-pattern opacity-5 mix-blend-multiply" />
+      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] translate-x-1/2 -translate-y-1/2 animate-pulse-soft" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/2 rounded-full blur-[180px]" />
+
       <div className="container mx-auto px-4 lg:px-8 relative">
         {/* Section Header */}
         <motion.div
@@ -87,14 +88,14 @@ export default function ContactSection() {
           <span className="text-secondary font-semibold text-sm tracking-[0.2em] uppercase">
             Contáctanos
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-3 mb-6 font-display">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mt-3 mb-6 font-display">
             Hablemos de tu Proyecto
           </h2>
-          <p className="text-primary-foreground/75 max-w-2xl mx-auto text-lg">
-            ¿Tienes un proyecto turístico en mente? Estamos aquí para ayudarte a 
+          <p className="text-primary/70 max-w-2xl mx-auto text-lg font-medium">
+            ¿Tienes un proyecto turístico en mente? Estamos aquí para ayudarte a
             hacerlo realidad de manera sostenible.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full mt-8" />
+          <div className="w-24 h-1 bg-gradient-to-r from-secondary to-[#176ddd] mx-auto rounded-full mt-8" />
         </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-12">
@@ -112,13 +113,13 @@ export default function ContactSection() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                  className="flex items-start gap-5 p-5 rounded-2xl bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 hover:border-secondary/30 transition-colors"
+                  className="flex items-start gap-6 p-6 rounded-[2rem] bg-muted/30 border border-primary/5 hover:border-secondary/50 hover:bg-muted/50 transition-all duration-300 group"
                 >
-                  <div className="p-3 bg-secondary/20 rounded-xl">
-                    <item.icon className="w-6 h-6 text-secondary" />
+                  <div className="p-4 bg-secondary/10 rounded-2xl group-hover:scale-110 transition-transform">
+                    <item.icon className="w-7 h-7 text-secondary" />
                   </div>
                   <div>
-                    <p className="text-primary-foreground/50 text-xs uppercase tracking-wider mb-1">
+                    <p className="text-secondary font-black text-[10px] uppercase tracking-[0.2em] mb-2">
                       {item.label}
                     </p>
                     {item.link ? (
@@ -126,15 +127,15 @@ export default function ContactSection() {
                         href={item.link}
                         target={item.link.startsWith("http") ? "_blank" : undefined}
                         rel="noopener noreferrer"
-                        className="text-primary-foreground font-semibold hover:text-secondary transition-colors text-lg"
+                        className="text-primary font-black hover:text-secondary transition-colors text-lg font-display"
                       >
                         {item.value}
                       </a>
                     ) : (
                       <>
-                        <p className="text-primary-foreground font-semibold text-lg">{item.value}</p>
+                        <p className="text-primary font-black text-lg font-display">{item.value}</p>
                         {item.subvalue && (
-                          <p className="text-primary-foreground/60 text-sm">{item.subvalue}</p>
+                          <p className="text-primary/60 text-sm mt-1">{item.subvalue}</p>
                         )}
                       </>
                     )}
@@ -143,25 +144,23 @@ export default function ContactSection() {
               ))}
             </div>
 
-            {/* Quick Contact Buttons */}
-            <div className="flex flex-col gap-4 mb-10">
+            {/* Quick Contact Buttons - Horizontal & Optimized */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-12 items-center lg:items-stretch">
               <Button
                 onClick={handleWhatsAppClick}
                 size="lg"
-                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold shadow-soft hover:shadow-glow transition-all duration-300 btn-shine group"
+                className="w-full sm:flex-1 bg-[#22c55e] hover:bg-[#22c55e]/90 text-white border-none shadow-glow-accent px-6 py-7 text-base rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95"
               >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Escribir por WhatsApp
-                <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                <img src={whatsappIcon} alt="" className="w-5 h-5 mr-3 brightness-0 invert" />
+                WhatsApp
               </Button>
               <Button
-                onClick={() => window.open("https://www.facebook.com", "_blank")}
+                onClick={() => window.open("https://www.facebook.com/YeseniaCiezaConsultora", "_blank")}
                 size="lg"
-                variant="outline"
-                className="w-full border-2 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/30"
+                className="w-full sm:flex-1 bg-[#176ddd] hover:bg-[#176ddd]/90 text-white border-none shadow-glow-secondary px-6 py-7 text-base rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 <Facebook className="w-5 h-5 mr-2" />
-                Seguir en Facebook
+                Facebook
               </Button>
             </div>
 
@@ -170,17 +169,17 @@ export default function ContactSection() {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.5 }}
-              className="bg-primary-foreground/5 rounded-2xl p-6 border border-primary-foreground/10"
+              className="bg-muted/30 rounded-2xl p-6 border border-primary/5"
             >
-              <h3 className="text-primary-foreground font-bold mb-4 font-display">
+              <h3 className="text-primary font-bold mb-4 font-display">
                 Información Empresarial
               </h3>
-              <div className="space-y-2 text-primary-foreground/70 text-sm">
-                <p><strong className="text-primary-foreground">RUC:</strong> 10464327377</p>
-                <p><strong className="text-primary-foreground">Razón Social:</strong> Yesenia Cieza Consultores</p>
+              <div className="space-y-2 text-primary/70 text-sm">
+                <p><strong className="text-primary">RUC:</strong> 10464327377</p>
+                <p><strong className="text-primary">Razón Social:</strong> Yesenia Cieza Consultores</p>
               </div>
-              <div className="mt-4 pt-4 border-t border-primary-foreground/10">
-                <p className="text-primary-foreground/50 text-xs italic font-display">
+              <div className="mt-4 pt-4 border-t border-primary/10">
+                <p className="text-primary/40 text-xs italic font-display">
                   "Capital por pensamiento creativo"
                 </p>
               </div>
@@ -196,7 +195,7 @@ export default function ContactSection() {
           >
             <form
               onSubmit={handleSubmit}
-              className="bg-card rounded-3xl p-8 md:p-10 shadow-elevated"
+              className="bg-card rounded-3xl p-8 md:p-10 shadow-elevated border border-primary/5"
             >
               <h3 className="text-2xl font-bold text-primary mb-2 font-display">
                 Envíanos un Mensaje
@@ -208,7 +207,7 @@ export default function ContactSection() {
               <div className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
+                    <label htmlFor="name" className="block text-sm font-semibold text-primary mb-2">
                       Nombre Completo
                     </label>
                     <Input
@@ -218,11 +217,11 @@ export default function ContactSection() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
-                      className="bg-muted/50 border-border focus:border-secondary h-12"
+                      className="bg-card border-white/50 focus:border-secondary text-primary h-12"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
+                    <label htmlFor="email" className="block text-sm font-semibold text-primary mb-2">
                       Correo Electrónico
                     </label>
                     <Input
@@ -232,13 +231,13 @@ export default function ContactSection() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
-                      className="bg-muted/50 border-border focus:border-secondary h-12"
+                      className="bg-card border-white/50 focus:border-secondary text-primary h-12"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-primary mb-2">
                     Mensaje
                   </label>
                   <Textarea
@@ -248,29 +247,29 @@ export default function ContactSection() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
                     rows={6}
-                    className="bg-muted/50 border-border focus:border-secondary resize-none"
+                    className="bg-card border-white/50 focus:border-secondary text-primary resize-none"
                   />
                 </div>
 
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold h-14 text-base shadow-soft hover:shadow-glow transition-all duration-300 btn-shine"
+                  className="w-full btn-premium h-16 text-lg rounded-2xl shadow-glow-secondary"
                   disabled={isSubmitting || isSubmitted}
                 >
                   {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <span className="w-5 h-5 border-2 border-secondary-foreground/30 border-t-secondary-foreground rounded-full animate-spin" />
+                    <span className="flex items-center gap-3">
+                      <span className="w-6 h-6 border-3 border-white/30 border-t-white rounded-full animate-spin" />
                       Enviando...
                     </span>
                   ) : isSubmitted ? (
-                    <span className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5" />
+                    <span className="flex items-center gap-3">
+                      <CheckCircle className="w-6 h-6" />
                       ¡Mensaje Enviado!
                     </span>
                   ) : (
-                    <span className="flex items-center gap-2">
-                      <Send className="w-5 h-5" />
+                    <span className="flex items-center gap-3">
+                      <Send className="w-6 h-6" />
                       Enviar Mensaje
                     </span>
                   )}

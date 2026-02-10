@@ -9,90 +9,95 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 210 25% 10%;
+    --foreground: 222 47% 11%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 210 25% 10%;
+    --card: 210 16% 94%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 25% 10%;
+    --popover: 210 16% 94%;
+    --popover-foreground: 222 47% 11%;
 
-    /* Primary: Dark Teal #163a5c - refined */
-    --primary: 207 60% 22%;
+    /* Primary: Intense Black #0a0c10 */
+    --primary: 222 47% 6%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Bright Teal #02a9b9 - more vibrant */
-    --secondary: 184 97% 36%;
+    /* Secondary: Professional Blue #176ddd */
+    --secondary: 214 81% 48%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Accent: Forest Green #228B22 - nature-inspired */
-    --accent: 120 61% 34%;
+    /* Accent: WhatsApp Green #22c55e */
+    --accent: 142 70.6% 45.3%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 210 20% 97%;
-    --muted-foreground: 210 15% 45%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 210 20% 92%;
-    --input: 210 20% 92%;
-    --ring: 184 97% 36%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Premium Custom tokens */
-    --gradient-hero: linear-gradient(160deg, hsl(207 60% 15% / 0.95) 0%, hsl(207 60% 22% / 0.85) 50%, hsl(184 97% 30% / 0.75) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(184 97% 36%) 0%, hsl(120 61% 38%) 100%);
-    --gradient-premium: linear-gradient(135deg, hsl(207 60% 22%) 0%, hsl(184 97% 36%) 50%, hsl(120 61% 34%) 100%);
-    --gradient-text: linear-gradient(135deg, hsl(207 60% 22%) 0%, hsl(184 97% 36%) 100%);
+    /* Professional Custom tokens - Plomo & Blue Theme */
+    --gradient-hero: linear-gradient(165deg, hsl(0 0% 100%) 0%, hsl(210 16% 98%) 40%, hsl(214 81% 95%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(210 16% 94%) 0%, hsl(210 16% 92%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(214 81% 50%) 0%, hsl(142 70.6% 45%) 100%);
+    --gradient-premium: linear-gradient(135deg, hsl(222 47% 10%) 0%, hsl(214 81% 48%) 50%, hsl(142 70.6% 40%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(222 47% 10%) 0%, hsl(214 81% 48%) 100%);
+    --gradient-vibrant: linear-gradient(135deg, #176ddd 0%, #22c55e 100%);
     
-    --shadow-xs: 0 1px 2px 0 hsl(207 60% 22% / 0.05);
-    --shadow-sm: 0 2px 8px -2px hsl(207 60% 22% / 0.08);
-    --shadow-soft: 0 4px 20px -4px hsl(207 60% 22% / 0.1);
-    --shadow-card: 0 8px 30px -8px hsl(207 60% 22% / 0.12);
-    --shadow-elevated: 0 20px 50px -12px hsl(207 60% 22% / 0.18);
-    --shadow-glow: 0 0 40px -10px hsl(184 97% 36% / 0.3);
+    --shadow-plomo: 0 10px 30px -10px hsl(222 47% 6% / 0.08);
+    --shadow-glow-secondary: 0 0 40px -10px hsl(214 81% 48% / 0.5);
+    --shadow-glow-accent: 0 0 40px -10px hsl(142 70.6% 45.3% / 0.5);
+    
+    --shadow-xs: 0 1px 2px 0 hsl(222 47% 6% / 0.05);
+    --shadow-sm: 0 2px 8px -2px hsl(222 47% 6% / 0.08);
+    --shadow-soft: 0 4px 20px -4px hsl(222 47% 6% / 0.1);
+    --shadow-card: 0 8px 30px -8px hsl(222 47% 6% / 0.12);
+    --shadow-elevated: 0 20px 50px -12px hsl(222 47% 6% / 0.18);
+    --shadow-glow: 0 0 40px -10px hsl(217.2 91.2% 59.8% / 0.3);
 
-    --sidebar-background: 207 60% 22%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 184 97% 36%;
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217.2 91.2% 59.8%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 120 61% 34%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 207 40% 30%;
-    --sidebar-ring: 184 97% 36%;
+    --sidebar-accent: 142 70.6% 45.3%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 210 25% 8%;
-    --foreground: 0 0% 98%;
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 210 25% 11%;
-    --card-foreground: 0 0% 98%;
+    --card: 222 47% 6%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 210 25% 11%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 222 47% 6%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 184 97% 45%;
-    --primary-foreground: 210 25% 8%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222 47% 6%;
 
-    --secondary: 207 60% 25%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 222 47% 12%;
+    --secondary-foreground: 210 40% 98%;
 
-    --accent: 120 61% 42%;
+    --accent: 142 70.6% 45.3%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 210 25% 15%;
-    --muted-foreground: 210 15% 65%;
+    --muted: 222 47% 12%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 210 25% 18%;
-    --input: 210 25% 18%;
-    --ring: 184 97% 45%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
   }
 }
 
@@ -125,8 +130,8 @@
 
   /* Premium selection color */
   ::selection {
-    background: hsl(184 97% 36% / 0.2);
-    color: hsl(207 60% 22%);
+    background: hsl(217.2 91.2% 59.8% / 0.2);
+    color: hsl(222 47% 6%);
   }
 }
 
@@ -181,8 +186,12 @@
     box-shadow: var(--shadow-elevated);
   }
 
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
+  .shadow-glow-secondary {
+    box-shadow: var(--shadow-glow-secondary);
+  }
+
+  .shadow-glow-accent {
+    box-shadow: var(--shadow-glow-accent);
   }
 
   /* Premium hover effects */
@@ -286,6 +295,20 @@
   }
 
   /* Button shine effect */
+  .btn-premium {
+    @apply relative overflow-hidden bg-primary text-primary-foreground font-bold shadow-soft transition-all duration-300 hover:shadow-elevated hover:scale-105 active:scale-95;
+    background: var(--gradient-premium);
+  }
+
+  .btn-premium::before {
+    content: '';
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-in-out;
+  }
+
+  .btn-premium:hover::before {
+    @apply translate-x-full;
+  }
+
   .btn-shine {
     @apply relative overflow-hidden;
   }

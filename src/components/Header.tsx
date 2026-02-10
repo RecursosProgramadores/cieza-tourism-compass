@@ -4,14 +4,14 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const services = [
-  { id: "3.1", name: "Asesoría Técnica en Gestión Turística", href: "#servicios" },
-  { id: "3.2", name: "Planificación Estratégica", href: "#servicios" },
-  { id: "3.3", name: "Marketing & Comunicaciones", href: "#servicios" },
-  { id: "3.4", name: "Diseño de Experiencias Turísticas", href: "#servicios" },
-  { id: "3.5", name: "Ecodiseño y Arquitectura", href: "#servicios" },
-  { id: "3.6", name: "Turismo Emprende", href: "#servicios" },
-  { id: "3.7", name: "Cursos y Capacitaciones", href: "#servicios" },
-  { id: "3.8", name: "Gestión de la Información Turística", href: "#servicios" },
+  { name: "Asesoría Técnica en Gestión Turística", href: "#servicios" },
+  { name: "Planificación Estratégica", href: "#servicios" },
+  { name: "Marketing & Comunicaciones", href: "#servicios" },
+  { name: "Diseño de Experiencias Turísticas", href: "#servicios" },
+  { name: "Ecodiseño y Arquitectura", href: "#servicios" },
+  { name: "Turismo Emprende", href: "#servicios" },
+  { name: "Cursos y Capacitaciones", href: "#servicios" },
+  { name: "Gestión de la Información Turística", href: "#servicios" },
 ];
 
 const navLinks = [
@@ -19,7 +19,7 @@ const navLinks = [
   { name: "Educación", href: "#educacion" },
   { name: "Servicios", href: "#servicios", hasDropdown: true },
   { name: "Proyectos", href: "#proyectos" },
-  { name: "Comunidad", href: "#comunidad" },
+  { name: "Comunidad  Turística", href: "#comunidad" },
   { name: "Contacto", href: "#contacto" },
 ];
 
@@ -32,7 +32,7 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       // Detect active section
       const sections = navLinks.map(link => link.href.replace("#", ""));
       for (const section of sections.reverse()) {
@@ -46,7 +46,7 @@ export default function Header() {
         }
       }
     };
-    
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -64,11 +64,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "glass-dark py-3 shadow-elevated"
-          : "bg-transparent py-5"
-      }`}
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[95%] max-w-7xl ${isScrolled
+        ? "bg-[#176ddd] shadow-glow-secondary py-3 rounded-full border border-white/20"
+        : "bg-[#176ddd]/90 backdrop-blur-md py-4 rounded-[2rem] border border-white/10"
+        }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
@@ -81,11 +80,11 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-primary-foreground font-bold text-xl md:text-2xl tracking-tight font-display group-hover:text-secondary transition-colors duration-300">
+            <span className="text-white font-black text-lg md:text-xl tracking-tighter font-display group-hover:text-white/80 transition-colors duration-300 drop-shadow-sm">
               Yesenia Cieza
             </span>
-            <span className="text-secondary/90 text-xs md:text-sm font-medium tracking-widest uppercase">
-              Consultores
+            <span className="text-white/80 font-black text-[7px] md:text-[8px] tracking-[0.3em] uppercase">
+              Consultora turística
             </span>
           </motion.a>
 
@@ -103,18 +102,16 @@ export default function Header() {
               >
                 <button
                   onClick={() => handleNavClick(link.href)}
-                  className={`px-4 py-2.5 font-medium text-sm flex items-center gap-1.5 rounded-lg transition-all duration-300 ${
-                    activeSection === link.href.replace("#", "")
-                      ? "text-secondary bg-secondary/10"
-                      : "text-primary-foreground/85 hover:text-secondary hover:bg-primary-foreground/5"
-                  }`}
+                  className={`px-3 py-2 font-black text-[12px] uppercase tracking-wider flex items-center gap-1.5 rounded-xl transition-all duration-300 ${activeSection === link.href.replace("#", "")
+                    ? "text-white bg-white/20 shadow-sm"
+                    : "text-white/80 hover:text-white hover:bg-white/10"
+                    }`}
                 >
                   {link.name}
                   {link.hasDropdown && (
                     <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-300 ${
-                        isServicesOpen ? "rotate-180" : ""
-                      }`}
+                      className={`w-4 h-4 transition-transform duration-300 ${isServicesOpen ? "rotate-180" : ""
+                        }`}
                     />
                   )}
                 </button>
@@ -128,21 +125,18 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 w-80 bg-card/98 backdrop-blur-xl shadow-elevated rounded-xl overflow-hidden mt-2 border border-border"
+                        className="absolute top-full left-0 w-80 bg-[#176ddd] backdrop-blur-xl shadow-glow-secondary rounded-xl overflow-hidden mt-2 border border-white/20"
                       >
                         <div className="p-2">
                           {services.map((service, idx) => (
                             <motion.button
-                              key={service.id}
+                              key={service.name}
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: idx * 0.03 }}
                               onClick={() => handleNavClick(service.href)}
-                              className="w-full px-4 py-3 text-left text-foreground/80 hover:bg-secondary/10 hover:text-secondary rounded-lg transition-all duration-200 text-sm flex items-center gap-3 group"
+                              className="w-full px-4 py-3 text-left text-white/90 hover:bg-white/10 hover:text-white rounded-lg transition-all duration-200 text-sm flex items-center gap-3 group"
                             >
-                              <span className="text-secondary font-bold text-xs bg-secondary/10 px-2 py-1 rounded group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
-                                {service.id}
-                              </span>
                               <span className="font-medium">{service.name}</span>
                             </motion.button>
                           ))}
@@ -161,9 +155,9 @@ export default function Header() {
             >
               <Button
                 onClick={() => handleNavClick("#contacto")}
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 shadow-soft hover:shadow-glow transition-all duration-300 btn-shine"
+                className="bg-accent hover:bg-accent/90 text-white px-8 py-2.5 rounded-xl shadow-glow-accent transition-all duration-300 hover:scale-105 active:scale-95 font-bold tracking-wide"
               >
-                Contáctanos
+                Solicitar Consultoría
               </Button>
             </motion.div>
           </nav>
@@ -237,9 +231,8 @@ export default function Header() {
                       {link.name}
                       {link.hasDropdown && (
                         <ChevronDown
-                          className={`w-5 h-5 transition-transform duration-300 ${
-                            isServicesOpen ? "rotate-180" : ""
-                          }`}
+                          className={`w-5 h-5 transition-transform duration-300 ${isServicesOpen ? "rotate-180" : ""
+                            }`}
                         />
                       )}
                     </button>
@@ -247,17 +240,14 @@ export default function Header() {
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
-                        className="bg-primary-foreground/5 rounded-lg mx-2 my-1 overflow-hidden"
+                        className="bg-white/5 rounded-lg mx-2 my-1 overflow-hidden"
                       >
                         {services.map((service) => (
                           <button
-                            key={service.id}
+                            key={service.name}
                             onClick={() => handleNavClick(service.href)}
-                            className="w-full px-5 py-2.5 text-left text-primary-foreground/80 hover:text-secondary transition-colors text-sm flex items-center gap-2"
+                            className="w-full px-5 py-3 text-left text-white/80 hover:text-white hover:bg-white/10 transition-all text-sm flex items-center gap-2"
                           >
-                            <span className="text-secondary font-bold text-xs">
-                              {service.id}
-                            </span>
                             {service.name}
                           </button>
                         ))}
@@ -273,10 +263,10 @@ export default function Header() {
                 >
                   <Button
                     onClick={() => handleNavClick("#contacto")}
-                    className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-soft"
+                    className="w-full bg-accent hover:bg-accent/90 text-white font-bold shadow-glow-accent rounded-xl"
                     size="lg"
                   >
-                    Contáctanos
+                    Solicitar Consultoría
                   </Button>
                 </motion.div>
               </motion.div>

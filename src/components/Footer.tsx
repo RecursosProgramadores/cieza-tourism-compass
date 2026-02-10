@@ -10,18 +10,22 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
   };
 
   return (
-    <footer ref={ref} className="bg-foreground text-background relative">
+    <footer ref={ref} className="bg-primary text-white relative overflow-hidden border-t border-white/10">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2" />
+
       {/* Main Footer */}
-      <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="container mx-auto px-4 lg:px-8 py-20 relative">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <h3 className="font-bold text-2xl mb-2 font-display">Yesenia Cieza Consultores</h3>
-            <p className="text-background/60 text-sm mb-4 max-w-sm">
-              Consultora Integral de Proyectos Turísticos. Más de 13 años transformando 
-              el turismo peruano con soluciones sostenibles.
+            <h3 className="font-black text-3xl mb-4 font-display tracking-tighter drop-shadow-sm">Yesenia Cieza Consultores</h3>
+            <p className="text-white/70 text-base mb-6 max-w-sm leading-relaxed">
+              Consultora Integral de Proyectos Turísticos. Más de 13 años transformando
+              el turismo peruano con soluciones sostenibles y alto impacto social.
             </p>
-            <p className="text-secondary text-sm italic font-display">
+            <p className="text-secondary font-black italic font-display text-lg tracking-tight">
               "Capital por pensamiento creativo"
             </p>
           </div>
@@ -30,17 +34,17 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
           <div>
             <h4 className="font-bold text-lg mb-5">Contacto</h4>
             <div className="space-y-4 text-sm text-background/70">
-              <a 
-                href="https://maps.google.com" 
-                target="_blank" 
+              <a
+                href="https://maps.google.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-3 hover:text-secondary transition-colors"
               >
                 <MapPin className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
                 <span>Urb. La Planicie Mz V Lote 10, San Martín - Tarapoto</span>
               </a>
-              <a 
-                href="tel:+51943254265" 
+              <a
+                href="tel:+51943254265"
                 className="flex items-center gap-3 hover:text-secondary transition-colors"
               >
                 <Phone className="w-4 h-4 text-secondary flex-shrink-0" />
@@ -58,12 +62,12 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
 
           {/* Social & Legal */}
           <div>
-            <h4 className="font-bold text-lg mb-5">Síguenos</h4>
-            <div className="flex gap-3 mb-6">
+            <h4 className="font-black text-xl mb-6 font-display text-secondary uppercase tracking-widest text-sm">Síguenos</h4>
+            <div className="flex gap-4 mb-8">
               {[
-                { icon: Facebook, href: "https://www.facebook.com", label: "Facebook" },
-                { icon: Instagram, href: "https://www.instagram.com", label: "Instagram" },
-                { icon: Linkedin, href: "https://www.linkedin.com", label: "LinkedIn" },
+                { icon: Facebook, href: "https://www.facebook.com/YeseniaCiezaConsultora", label: "Facebook" },
+                { icon: Instagram, href: "https://www.instagram.com/yeseniacieza", label: "Instagram" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/yeseniacieza", label: "LinkedIn" },
               ].map((social) => (
                 <a
                   key={social.label}
@@ -71,9 +75,9 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="p-3 bg-background/5 rounded-xl hover:bg-secondary/20 hover:text-secondary transition-all duration-300"
+                  className="p-4 bg-white/5 rounded-2xl hover:bg-secondary/20 hover:text-white transition-all duration-300 border border-white/10 hover:border-secondary shadow-soft"
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-6 h-6" />
                 </a>
               ))}
             </div>
