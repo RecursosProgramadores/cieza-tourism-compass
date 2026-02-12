@@ -18,7 +18,7 @@ import ecoTourismImage from "@/assets/eco-tourism.jpeg";
 import speakerImage from "@/assets/conferencia/conferensista.jpeg";
 import speakerImage1 from "@/assets/conferencia/conferensista1.jpeg";
 import speakerImage2 from "@/assets/conferencia/conferensista2.jpeg";
-import trainingImage from "@/assets/training-workshop.jpg";
+import trainingImage from "@/assets/heroimagen.jpeg";
 
 const conferenceTopics = [
   "Green Marketing turístico",
@@ -60,7 +60,7 @@ export default function AboutSection() {
   return (
     <section id="sobre-mi" className="py-24 md:py-32 bg-muted/40 relative overflow-hidden" ref={ref}>
       {/* Background decoration - More LIFE and COLOR */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 animate-pulse-soft" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#176ddd]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 animate-pulse-soft" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px] translate-y-1/2 -translate-x-1/2" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full dot-pattern opacity-30 pointer-events-none" />
 
@@ -72,7 +72,7 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <span className="text-secondary font-semibold text-sm tracking-[0.2em] uppercase">
+          <span className="text-[#176ddd] font-semibold text-sm tracking-[0.2em] uppercase">
             Sobre Mí
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mt-3 mb-6 font-display">
@@ -112,14 +112,14 @@ export default function AboutSection() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.7 }}
-              className="absolute -bottom-8 -right-8 bg-white/95 backdrop-blur-md p-7 rounded-[2.5rem] shadow-glow-secondary border border-secondary/20 transition-transform hover:scale-105 duration-300"
+              className="absolute -bottom-8 -right-8 bg-white/95 backdrop-blur-md p-7 rounded-[2.5rem] shadow-[#176ddd]/20 shadow-xl border border-[#176ddd]/20 transition-transform hover:scale-105 duration-300"
             >
-              <p className="text-6xl font-black text-gradient font-display drop-shadow-sm">100+</p>
+              <p className="text-6xl font-black text-[#176ddd] font-display drop-shadow-sm">100+</p>
               <p className="text-primary/70 text-xs font-bold uppercase tracking-widest mt-1">Proyectos Exitosos</p>
             </motion.div>
 
             {/* Decorative element */}
-            <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-secondary/30 rounded-2xl -z-10" />
+            <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-[#176ddd]/30 rounded-2xl -z-10" />
           </motion.div>
 
           {/* Content */}
@@ -138,16 +138,16 @@ export default function AboutSection() {
 
             <motion.div
               variants={itemVariants}
-              className="bg-gradient-to-br from-secondary/10 to-accent/5 p-8 rounded-2xl mb-8 border border-secondary/20"
+              className="bg-gradient-to-br from-[#176ddd]/10 to-accent/5 p-8 rounded-2xl mb-8 border border-[#176ddd]/20"
             >
               <div className="flex items-start gap-4 mb-4">
-                <Quote className="w-10 h-10 text-secondary/40 flex-shrink-0" />
+                <Quote className="w-10 h-10 text-[#176ddd]/40 flex-shrink-0" />
                 <div>
                   <h3 className="font-bold text-primary text-xl mb-3 font-display">
                     ¿Por qué trabajar con Yesenia Consultora?
                   </h3>
                   <p className="text-foreground/80 leading-relaxed">
-                    Porque nos avala la <strong className="text-secondary">trayectoria</strong>,
+                    Porque nos avala la <strong className="text-[#176ddd]">trayectoria</strong>,
                     con un respaldo de equipo de consultores en proyectos exitosos de
                     desarrollo de destinos, turismo sostenible, calidad turística,
                     ecoturismo, turismo cultural e industrial en Perú.
@@ -182,14 +182,14 @@ export default function AboutSection() {
           <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-7">
               <div className="flex items-center gap-4 mb-8">
-                <div className="p-4 bg-secondary/10 rounded-xl">
-                  <Mic2 className="w-8 h-8 text-secondary" />
+                <div className="p-4 bg-[#176ddd]/10 rounded-xl">
+                  <Mic2 className="w-8 h-8 text-[#176ddd]" />
                 </div>
                 <div>
                   <h3 className="text-3xl font-bold text-primary font-display">
                     Conferencista & Expositora
                   </h3>
-                  <p className="text-secondary font-medium tracking-wide">Especialidades y temas de ponencia</p>
+                  <p className="text-[#176ddd] font-medium tracking-wide">Especialidades y temas de ponencia</p>
                 </div>
               </div>
 
@@ -200,10 +200,10 @@ export default function AboutSection() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.4, delay: 0.5 + index * 0.08 }}
-                    className="flex items-center gap-3 p-4 bg-card rounded-xl border border-white/50 shadow-sm hover:border-secondary/30 hover:bg-card/80 transition-all group"
+                    className="flex items-center gap-3 p-4 bg-card rounded-xl border border-white/50 shadow-sm hover:border-[#176ddd]/30 hover:bg-card/80 transition-all group"
                   >
-                    <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 group-hover:bg-secondary/20 transition-colors">
-                      <CheckCircle2 className="w-5 h-5 text-secondary transition-transform group-hover:scale-110" />
+                    <div className="w-8 h-8 rounded-full bg-[#176ddd]/10 flex items-center justify-center shrink-0 group-hover:bg-[#176ddd]/20 transition-colors">
+                      <CheckCircle2 className="w-5 h-5 text-[#176ddd] transition-transform group-hover:scale-110" />
                     </div>
                     <span className="text-primary/85 text-sm font-medium leading-tight">{topic}</span>
                   </motion.div>
@@ -258,7 +258,7 @@ export default function AboutSection() {
               </div>
 
               {/* Decorative elements for grid */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-secondary/10 rounded-full blur-2xl -z-10" />
+              <div className="absolute -top-6 -right-6 w-32 h-32 bg-[#176ddd]/10 rounded-full blur-2xl -z-10" />
               <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-accent/5 rounded-full blur-3xl -z-10" />
 
               <motion.div
@@ -270,7 +270,7 @@ export default function AboutSection() {
                 <div className="flex -space-x-2 mb-3">
                   {[1, 2, 3].map((i) => (
                     <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-background flex items-center justify-center overflow-hidden shadow-sm">
-                      <Users className="w-5 h-5 text-secondary" />
+                      <Users className="w-5 h-5 text-[#176ddd]" />
                     </div>
                   ))}
                   <div className="w-10 h-10 rounded-full border-2 border-white bg-gradient-vibrant text-white text-[12px] font-black flex items-center justify-center shadow-md">
@@ -294,7 +294,7 @@ export default function AboutSection() {
             <h3 className="text-3xl md:text-4xl font-bold text-primary font-display mb-4">
               Habilidades y Conocimientos
             </h3>
-            <div className="w-20 h-1.5 bg-secondary mx-auto rounded-full" />
+            <div className="w-20 h-1.5 bg-[#176ddd] mx-auto rounded-full" />
           </div>
 
           <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -310,11 +310,11 @@ export default function AboutSection() {
                     className="group relative"
                   >
                     <div className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-white/50 shadow-sm hover:shadow-plomo hover:bg-card/80 transition-all duration-500 overflow-hidden">
-                      <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-soft">
-                        <skill.icon className="w-6 h-6 text-secondary" />
+                      <div className="w-12 h-12 rounded-2xl bg-[#176ddd]/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-soft">
+                        <skill.icon className="w-6 h-6 text-[#176ddd]" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-primary font-black text-sm group-hover:text-secondary transition-colors duration-300">{skill.text}</span>
+                        <span className="text-primary font-black text-sm group-hover:text-[#176ddd] transition-colors duration-300">{skill.text}</span>
                         <span className="text-primary/50 text-[10px] uppercase font-bold tracking-widest leading-none mt-1">Conocimiento Experto</span>
                       </div>
                     </div>
@@ -368,7 +368,7 @@ export default function AboutSection() {
                 <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-accent/20 rounded-full blur-[100px] -z-10" />
 
                 {/* Decorative border frame */}
-                <div className="absolute -inset-6 border-2 border-dashed border-secondary/40 rounded-[4rem] -z-10 opacity-50" />
+                <div className="absolute -inset-6 border-2 border-dashed border-[#176ddd]/40 rounded-[4rem] -z-10 opacity-50" />
               </motion.div>
 
               {/* Skill percentage circle badges (visual flourish) */}
@@ -376,7 +376,7 @@ export default function AboutSection() {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 1.2, type: "spring" }}
-                className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-vibrant rounded-3xl shadow-glow-accent flex flex-col items-center justify-center text-white z-20 hover:rotate-6 transition-transform"
+                className="absolute -top-8 -left-8 w-24 h-24 bg-[#176ddd] rounded-3xl shadow-[#176ddd]/30 shadow-2xl flex flex-col items-center justify-center text-white z-20 hover:rotate-6 transition-transform"
               >
                 <span className="text-3xl font-black">13+</span>
                 <span className="text-[10px] uppercase font-bold tracking-tighter">Años exp</span>

@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowDown, MapPin, Award, Briefcase, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-machu-picchu.jpg";
-import heroFoto from "@/assets/portada.png";
+import heroImage from "@/assets/heroimagen.jpeg";
+import heroFoto from "@/assets/conferensista1.jpeg";
 
 export default function HeroSection() {
   const handleScrollToAbout = () => {
@@ -38,8 +38,10 @@ export default function HeroSection() {
           className="w-full h-full object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-primary/40 opacity-60" />
+        <div className="absolute inset-0 bg-black/40" />
+        {/* Cinematic Curtain Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent lg:from-black/70 lg:via-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
         {/* Overlay pattern - very subtle */}
         <div className="absolute inset-0 dot-pattern opacity-10" />
       </motion.div>
@@ -101,7 +103,7 @@ export default function HeroSection() {
       </div>
 
       {/* MAIN TITLE: Horizontal and Centered below Header (Global) */}
-      <div className="absolute left-1/2 top-24 -translate-x-1/2 z-30 pointer-events-none w-full text-center px-4">
+      <div className="absolute left-1/2 top-32 -translate-x-1/2 z-30 pointer-events-none w-full text-center px-4">
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{
@@ -114,9 +116,9 @@ export default function HeroSection() {
             scale: { duration: 1, delay: 0.2 },
             y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
           }}
-          className="text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-black text-primary font-display tracking-tighter"
+          className="text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-black text-white font-display tracking-tighter drop-shadow-[0_0_25px_rgba(255,255,255,0.7)]"
         >
-          Consultoría <span className="text-secondary drop-shadow-glow">360°</span> en Turismo
+          Consultoría <span className="text-[#176ddd] drop-shadow-glow">360°</span> en Turismo
         </motion.h1>
       </div>
 
@@ -125,58 +127,40 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center w-full relative">
 
           {/* Left Column: Context & Action */}
-          <div className="max-w-xl text-left z-20">
-            {/* Tagline - Prominent Title Style (Single Line) */}
-            <motion.h2
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-white font-black text-xl md:text-3xl lg:text-3xl xl:text-4xl leading-tight mb-6 drop-shadow-2xl whitespace-nowrap"
-            >
-              Consultora Integral de <span className="text-secondary drop-shadow-glow-secondary">Proyectos Turísticos</span>
-            </motion.h2>
-
-            {/* Empty space where H1 was, now for description */}
-            <motion.p
+          <div className="max-w-xl text-left z-20 space-y-8">
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-white drop-shadow-md text-lg md:text-xl mb-12 leading-relaxed font-bold mt-4 bg-black/10 backdrop-blur-[2px] p-4 rounded-2xl border border-white/10"
+              className="group p-8 md:p-10 rounded-[2.5rem] bg-black/25 backdrop-blur-xl border border-white/10 shadow-elevated transition-all duration-500 hover:bg-black/35 hover:border-white/20 hover:scale-[1.02]"
             >
-              Más de <span className="text-secondary font-black">13 años</span> transformando el turismo peruano con soluciones innovadoras y desarrollo sostenible.
-            </motion.p>
+              {/* Tagline */}
+              <h2 className="text-white font-black text-2xl md:text-3xl lg:text-4xl leading-tight mb-6 tracking-tight">
+                Consultora Integral de <span className="text-[#176ddd] drop-shadow-glow-secondary">Proyectos Turísticos</span>
+              </h2>
 
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-14"
-            >
-              {[
-                { icon: Briefcase, value: "100+", label: "Proyectos" },
-                { icon: MapPin, value: "Perú", label: "Machu Picchu" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                  className="flex flex-row items-center gap-3 p-4 rounded-2xl bg-black/10 backdrop-blur-[4px] border border-white/10 shadow-lg group-hover:bg-black/20 transition-all duration-300"
-                >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-secondary/20">
-                    <stat.icon className="w-5 h-5 text-secondary" />
+              {/* Description */}
+              <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-10 font-medium">
+                Más de <span className="text-white font-black">13 años</span> transformando el turismo peruano con <span className="text-[#176ddd] font-bold italic">soluciones innovadoras</span> y desarrollo sostenible con <strong className="text-white">proyectos nacionales e internacionales</strong>.
+              </p>
+
+              {/* Refactored Stats Grid */}
+              <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
+                {/* Projects Stat */}
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-4xl font-black text-[#176ddd] tracking-tighter">100</span>
+                    <span className="text-2xl font-black text-[#176ddd]">+</span>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="font-bold text-lg text-white font-display leading-none">
-                      {stat.value}
-                    </span>
-                    <span className="text-[9px] text-white/80 uppercase tracking-widest mt-1 font-bold">
-                      {stat.label === "Machu Picchu" ? "Machu Picchu al amanecer - Turismo sostenible en Perú" : stat.label}
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-black text-white/50 leading-none">Proyectos Exitosos</span>
+                </div>
+
+                {/* Location/Nature Stat */}
+                <div className="flex flex-col gap-1">
+                  <span className="text-4xl font-black text-white tracking-tighter">Perú</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-black text-white/50 leading-none truncate">Turismo Sostenible</span>
+                </div>
+              </div>
             </motion.div>
 
             {/* CTA Buttons - Centered and Animated */}
@@ -189,7 +173,7 @@ export default function HeroSection() {
               <Button
                 onClick={handleScrollToContact}
                 size="lg"
-                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-white px-10 py-7 text-lg shadow-glow-accent rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95 font-bold"
+                className="w-full sm:w-auto bg-[#176ddd] hover:bg-[#145cb8] text-white px-10 py-7 text-lg shadow-glow-secondary rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95 font-bold"
               >
                 Solicitar Consultoría
               </Button>
@@ -203,10 +187,6 @@ export default function HeroSection() {
               </Button>
             </motion.div>
           </div>
-
-
-
-
 
           {/* Right Column: Imagery */}
           <div className="relative z-10 flex justify-center items-center">
@@ -254,8 +234,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-
-
     </section>
   );
 }
