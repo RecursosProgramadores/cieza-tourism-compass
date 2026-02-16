@@ -51,13 +51,25 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    // Format message for WhatsApp
+    const whatsappMessage = encodeURIComponent(
+      `*Nuevo Mensaje de Contacto*\n\n` +
+      `*Nombre:* ${formData.name}\n` +
+      `*Email:* ${formData.email}\n` +
+      `*Mensaje:* ${formData.message}`
+    );
+
+    // Redirect to WhatsApp
+    window.open(`https://wa.me/51943254265?text=${whatsappMessage}`, "_blank");
+
+    // Show success state
     setIsSubmitting(false);
     setIsSubmitted(true);
     setFormData({ name: "", email: "", message: "" });
     toast({
-      title: "¡Mensaje enviado!",
-      description: "Nos pondremos en contacto contigo pronto.",
+      title: "¡Redirigiendo a WhatsApp!",
+      description: "Se ha abierto una nueva pestaña para enviar tu mensaje.",
     });
     setTimeout(() => setIsSubmitted(false), 3000);
   };
@@ -254,7 +266,7 @@ export default function ContactSection() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full btn-premium h-16 text-lg rounded-2xl shadow-glow-secondary"
+                  className="w-full bg-[#176ddd] hover:bg-[#176ddd]/90 text-white h-16 text-lg rounded-2xl shadow-glow-secondary transition-all duration-300 hover:scale-105 active:scale-95"
                   disabled={isSubmitting || isSubmitted}
                 >
                   {isSubmitting ? (

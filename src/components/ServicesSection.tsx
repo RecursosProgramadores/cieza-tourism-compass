@@ -226,7 +226,7 @@ export default function ServicesSection() {
         >
           <button
             onClick={() => handleWhatsAppClick()}
-            className="inline-flex items-center gap-3 bg-accent hover:bg-accent/90 text-white px-12 py-6 text-lg rounded-2xl shadow-glow-accent transition-all duration-300 hover:scale-105 active:scale-95 font-bold group"
+            className="inline-flex items-center gap-3 bg-[#176ddd] hover:bg-[#176ddd]/90 text-white px-12 py-6 text-lg rounded-2xl shadow-glow-secondary transition-all duration-300 hover:scale-105 active:scale-95 font-bold group"
           >
             Solicitar Consultoría Personalizada
             <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />

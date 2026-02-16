@@ -19,7 +19,7 @@ const WhatsAppButton = forwardRef<HTMLButtonElement>((_, ref) => {
       transition={{ delay: 1.5, type: "spring", stiffness: 200, damping: 15 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-6 right-6 z-50 bg-accent hover:bg-accent/90 text-accent-foreground p-4 rounded-full shadow-elevated hover:shadow-glow flex items-center gap-3 group transition-all duration-300"
+      className="fixed bottom-6 right-6 z-50 bg-[#22c55e] hover:bg-[#22c55e]/90 text-white p-4 rounded-full shadow-elevated hover:shadow-glow-accent flex items-center gap-3 group transition-all duration-300"
       aria-label="Contactar por WhatsApp"
     >
       <img src={whatsappIcon} alt="WhatsApp" className="w-6 h-6 brightness-0 invert" />
@@ -28,7 +28,7 @@ const WhatsAppButton = forwardRef<HTMLButtonElement>((_, ref) => {
       </span>
 
       {/* Pulse ring */}
-      <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-20" />
+      <span className="absolute inset-0 rounded-full bg-[#22c55e] animate-ping opacity-20" />
     </motion.button>
   );
 });

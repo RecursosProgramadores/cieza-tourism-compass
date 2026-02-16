@@ -181,7 +181,7 @@ export default function HeroSection() {
                 onClick={handleScrollToAbout}
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto border-2 border-[#176ddd]/20 text-[#176ddd] hover:bg-[#176ddd]/5 px-10 py-7 text-lg backdrop-blur-md rounded-2xl transition-all duration-300 hover:border-[#176ddd]/40 font-bold"
+                className="w-full sm:w-auto border-2 border-[#176ddd]/20 text-[#176ddd] hover:bg-[#176ddd] hover:text-white hover:shadow-glow-secondary px-10 py-7 text-lg backdrop-blur-md rounded-2xl transition-all duration-300 hover:border-[#176ddd] font-bold"
               >
                 Conocer Más
               </Button>

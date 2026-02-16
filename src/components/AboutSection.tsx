@@ -93,7 +93,7 @@ export default function AboutSection() {
               <img
                 src={ecoTourismImage}
                 alt="Ecoturismo sostenible en la Amazonía peruana"
-                className="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-auto max-h-[500px] object-contain transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/20 to-transparent" />
