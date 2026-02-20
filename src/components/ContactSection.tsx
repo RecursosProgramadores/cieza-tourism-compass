@@ -167,7 +167,7 @@ export default function ContactSection() {
                 WhatsApp
               </Button>
               <Button
-                onClick={() => window.open("https://www.facebook.com/YeseniaCiezaConsultora", "_blank")}
+                onClick={() => window.open("https://www.facebook.com/ConsultoraYeseniaCieza", "_blank")}
                 size="lg"
                 className="w-full sm:flex-1 bg-[#176ddd] hover:bg-[#176ddd]/90 text-white border-none shadow-glow-secondary px-6 py-7 text-base rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95"
               >

@@ -82,9 +82,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
             <h4 className="font-black text-xl mb-6 font-display text-secondary uppercase tracking-widest text-sm">Síguenos</h4>
             <div className="flex gap-4 mb-8">
               {[
-                { icon: Facebook, href: "https://www.facebook.com/YeseniaCiezaConsultora", label: "Facebook" },
-                { icon: Instagram, href: "https://www.instagram.com/yeseniacieza", label: "Instagram" },
-                { icon: Linkedin, href: "https://www.linkedin.com/in/yeseniacieza", label: "LinkedIn" },
+                { icon: Facebook, href: "https://www.facebook.com/ConsultoraYeseniaCieza", label: "Facebook" },
               ].map((social) => (
                 <a
                   key={social.label}
